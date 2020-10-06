@@ -1,4 +1,3 @@
-//main file is here
 <?php
 include("config.php");
 
@@ -26,15 +25,15 @@ $result = mysqli_query($mysqli,"SELECT * FROM
 
 
       while($product_id = mysqli_fetch_assoc($result)){
-        "<tr>";
-        "<td>".$product_id['id']."</td>";
-        "<td>".$product_id['name']."</td>";
-        "<td>".$product_id['importir_id']."</td>";
-        "<td>".$product_id['photo']."</td>";
-        "<td>".$product_id['qty']."</td>";
-        "<td>".$product_id['price']."</td>";
-        "<td><a href = "update_product.php?id=$product_id['id']"Edit</a>
-        <a href = "delete_product.php?id=$product_id['id']"delete</a>;
+        echo "<tr>";
+        echo "<td>".$product_id['id']."</td>";
+        echo "<td>".$product_id['name']."</td>";
+        echo "<td>".$product_id['importir_id']."</td>";
+        echo "<td>".$product_id['photo']."</td>";
+        echo "<td>".$product_id['qty']."</td>";
+        echo "<td>".$product_id['price']."</td>";
+        echo '<td><a href="update_product.php?id='.$product_id['id'].'">Edit</a>';
+        echo '<a href = "delete_product.php?id='.$product_id['id'].'"delete</a>';
       }
       ?>
       </table>
@@ -54,7 +53,6 @@ $result = mysqli_query($mysqli,"SELECT * FROM
       //           <a href="delete_product.php?id=<?=$product_id['id']?>">Delete</a>
       //        </td>
       //     </tr>
-      // <?php } ?>
 
 
       <a href="add_product.php">Add Product</a>
