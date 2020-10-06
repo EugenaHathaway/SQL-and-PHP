@@ -1,4 +1,4 @@
-//config is where i link the SQL database to PHP
+//config is where i link the 'test' SQL database to PHP
 <?php
  $databaseHost = "localhost";
  $databaseName = "test";
