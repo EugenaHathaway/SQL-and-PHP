@@ -1,3 +1,4 @@
+//config is where i link the SQL database to PHP
 <?php
  $databaseHost = "localhost";
  $databaseName = "test";
