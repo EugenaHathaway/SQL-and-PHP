@@ -2,6 +2,8 @@
 
 include(config.php);
 
+// Check if form is submitted for user update, then redirect to homepage after update
+
 if(isset($_POST['update']))
 {
 $id = $_POST['id'];
@@ -11,16 +13,22 @@ $photo = $_POST['photo'];
 $qty = $_POST['qty'];
 $price = $_POST['price'];
 
-$result = mysqli_query($mysqli,"UPDATE Product
+// update user data
+
+$result = mysqli_query($mysqli,"UPDATE product_tb
 SET id='$id',name='$name',importir_id='$importir_id',
-photo = '$photo',qty = 'qty',price = 'price'
+photo = '$photo',qty = '$qty',price = '$price'
 WHERE id=$id");
+
+// Redirect to homepage to display updated user in list
 
   header("Location:index.php")
 }
  ?>
 
  <?php
+ // Display selected user data based on id
+// Getting id from url
 $id = $_GET['id'];
 
 $result = mysqli_query($mysqli, "SELECT * FROM
@@ -28,12 +36,12 @@ $result = mysqli_query($mysqli, "SELECT * FROM
 
  while($product_id = mysqli_fetch_array($result))
  {
-   $id = $product_id[id];
-   $name = $product_id[name];
-   $importir_id = $product_id[importir_id];
-   $photo = $product_id[photo];
-   $qty = $product_id[qty];
-   $price = $product_id[price];
+   $id = $product_id['id'];
+   $name = $product_id['name'];
+   $importir_id = $product_id['importir_id'];
+   $photo = $product_id['photo'];
+   $qty = $product_id['qty'];
+   $price = $product_id['price'];
 
 
  }
@@ -43,49 +51,49 @@ $result = mysqli_query($mysqli, "SELECT * FROM
 <head>Update product</head>
 
 <body>
-  <form name = "update product" method = post
+  <form name = "update product" method = "post"
   action = "update_product.php">
 
   <table border = "0">
     <tr>
       <td>id</td>
       <td><input type = "text"
-        name = "id" value = <?php
-        echo $id; ?></td>
+        name = "id"
+        value = <?php echo $id; ?>></td>
     </tr>
 
     <tr>
       <td>name</td>
       <td><input type = "text"
-        name = "name" value = <?php
-        echo $name; ?></td>
+        name = "name"
+        value = <?php echo $name; ?>></td>
     </tr>
 
     <tr>
       <td>importir_id</td>
       <td><input type = "text"
-        name = "importir_id" value = <?php
-        echo $importir_id; ?></td>
+        name = "importir_id"
+        value = <?php echo $importir_id; ?>></td>
     </tr>
 
     <tr>
       <td>photo</td>
       <td><input type = "text"
-        name = "photo" value = <?php
-        echo $photo; ?></td>
+        name = "photo"
+        value = <?php echo $photo; ?>></td>
     </tr>
 
     <tr>
       <td>qty</td>
       <td><input type = "text"
-        name = "qty" value = <?php
-        echo $qty; ?></td>
+        name = "qty"
+        value = <?php echo $qty; ?>></td>
 
         <tr>
           <td>price</td>
           <td><input type = "text"
             name = "price" value = <?php
-            echo $price; ?></td>
+            echo $price; ?>></td>
         </tr>
     </tr>
 
@@ -98,8 +106,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM
 
     <tr>
       <td><input type = "hidden"
-        name = "id" value = <?php
-        echo $_GET [id]; ?></td>
+        name = "id"
+        value = <?php echo $_GET ['id']; ?>></td>
     </tr>
 
     <tr>
