@@ -8,7 +8,7 @@
 
   <form action="add_product.php"
   method="post" name="form1>
-  <table>
+  <table width="25%" border="0">
     <tr>
       <td>id</td>
       <td><input type="text"
@@ -36,26 +36,32 @@
 
                   <td></td>
                   <td><input type="submit"
-                    name="submit" value"Add Product"
+                    name="Submit" value="Add Product"
                   </form>
 
-                  <?php
-if (isset($_POST['submit'])){
-$id = $_post['id'];
-$id = $_post['name'];
-$id = $_post['importir_id'];
-$id = $_post['photo'];
-$id = $_post['qty'];
-$id = $_post['price'];
+
+  <?php
+if (isset($_POST['Submit'])){
+$id = $_POST['id'];
+$name = $_POST['name'];
+$importir_id = $_POST['importir_id'];
+$photo = $_POST['photo'];
+$qty = $_POST['qty'];
+$price = $_POST['price'];
 
 }
+// include database connection file
+
 include("config.php");
-$resutl = mysqli_query($mysqli,"INSERT INTO
+
+// Insert user data into table
+
+$result = mysqli_query($mysqli,"INSERT INTO
   product_tb(id,name,importir_id,photo,qty,price)
   VALUES('$id','$name','$importir_id,'$photo','$qty','$price')");
 
-  echo "product added successfully";
-  <a href='index.php'>View Product</a>
+  echo "product added successfully"
+  <a href='index.php'>View Product</a>;
 
                    ?>
 </body>
